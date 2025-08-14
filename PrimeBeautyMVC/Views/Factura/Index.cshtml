@@ -1,0 +1,43 @@
+﻿@model List<Factura>
+
+<h1 class="text-center text-primary">Listado de Facturas</h1>
+
+<table class="mt-5 table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Numero de Cita</th>
+            <th>UsuarioID</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @{
+            if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="6" class="bg-info" > No existen registros </td>
+                
+                </tr>
+            }
+            else
+            {
+
+                foreach (var factura in Model)
+                {
+                    <tr>
+                        <td>@factura.Id</td>
+                        <td>@factura.CitaId</td>
+                        <td>@factura.UsuarioId</td>
+                        <td>@factura.Subtotal</td>
+                        <td>@factura.Total</td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

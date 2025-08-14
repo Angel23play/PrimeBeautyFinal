@@ -1,0 +1,45 @@
+﻿@model List<Cita>
+
+<h1 class="text-center text-primary">Listado de Citas</h1>
+
+<table class="mt-5 table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>UsuarioId</th>
+            <th>EmpleadoId</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estado</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @{
+            if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="6" class="bg-info" > No existen registros </td>
+                
+                </tr>
+            }
+            else
+            {
+
+                foreach (var cita in Model)
+                {
+                    <tr>
+                        <td>@cita.Id</td>
+                        <td>@cita.UsuarioId</td>
+                        <td>@cita.EmpleadoId</td>
+                        <td>@cita.Fecha</td>
+                        <td>@cita.Hora</td>
+                        <td>@cita.Estado</td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

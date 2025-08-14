@@ -1,0 +1,46 @@
+﻿@model List<Pago>
+
+<h1 class="text-center text-primary">Listado de Pagos</h1>
+
+<table class="mt-5 table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Cuenta</th>
+            <th>Monto</th>
+            <th>Factura</th>
+            <th>Usuario</th>
+            <th>Nota</th>
+            <th>Metodo de Pago</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @{
+            if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="7" class="bg-info"> No existen registros </td>
+
+                </tr>
+            }
+            else
+            {
+
+                foreach (var pago in Model)
+                {
+                    <tr>
+                        <td>@pago.Id</td>
+                        <td>@pago.Cuenta</td>
+                        <td>@pago.Monto</td>
+                        <td>@pago.FacturaId</td>
+                        <td>@pago.UsuarioId</td>
+                        <td>@pago.Nota</td>
+                        <td>@pago.MetodoDePago</td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

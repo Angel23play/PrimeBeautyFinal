@@ -1,0 +1,4 @@
+
+
+1- Seleccionas el directorio del Proyecto.
+2- Pones esa linea en la terminal de tu computador y el reporte se pone cambiando el nombre (NombreACambiar.XML) por el que puedas con un nombre no existente.  dotnet test --logger "nunit;LogFilePath=TestResults\NombreACambiar.xml"

@@ -1,0 +1,38 @@
+﻿@model List<Servicio>
+
+<h1 class="text-center text-primary">Listado de Servicios</h1>
+
+<table class="mt-5 table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @{
+            if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="6" class="bg-info"> No existen registros </td>
+
+                </tr>
+            }
+            else
+            {
+
+                foreach (var servicio in Model)
+                {
+                    <tr>
+                        <td>@servicio.Id</td>
+                        <td>@servicio.Nombre</td>
+                        <td>@servicio.Precio</td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

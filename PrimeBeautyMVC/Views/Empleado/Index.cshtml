@@ -1,0 +1,55 @@
+﻿@model List<Empleado>
+
+<h1 class="text-center text-primary">Listado de Empleados</h1>
+<a asp-action="Create" class="btn btn-primary">Crear Nuevo Empleado</a>
+
+<table class="mt-5 table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Tipo</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @{
+            if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="7" class="bg-info"> No existen registros </td>
+                </tr>
+            }
+            else
+            {
+
+                foreach (var empleado in Model)
+                {
+                    <tr>
+                        <td>@empleado.Id</td>
+                        <td>@empleado.Nombre</td>
+                        <td>@empleado.Apellido</td>
+                        <td>@empleado.Tipo</td>
+                        <td>@empleado.Email</td>
+                        <td>@empleado.Telefono</td>
+                        <td>
+                            <a asp-action="Update" asp-route-id="@empleado.Id" class="btn btn-warning btn-sm">Editar</a>
+                            <a asp-action="Delete" asp-route-id="@empleado.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
+@if (TempData["SuccessMessage"] != null)
+{
+	<div class="alert alert-success">
+		@TempData["SuccessMessage"]
+	</div>
+}
