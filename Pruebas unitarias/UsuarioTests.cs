@@ -10,8 +10,9 @@ namespace Pruebas_unitarias.PrimeBeautyMVC.Tests
     [TestFixture]
     public class UsuarioTests
     {
-        private IWebDriver driver;
-        private WebDriverWait wait;
+        private IWebDriver driver = null!;
+        private WebDriverWait wait = null!;
+
         private readonly string baseUrl = "https://localhost:7265";
 
         // Guardamos el email para luego buscarlo en editar/eliminar

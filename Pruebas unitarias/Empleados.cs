@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Support.UI;
 using System;
 
@@ -10,17 +10,19 @@ namespace PrimeBeautyMVC.Tests
     [TestFixture]
     public class Empleados
     {
-        private IWebDriver driver;
-        private WebDriverWait wait;
-        private string baseUrl = "https://localhost:5001"; // Ajusta tu puerto
+        private IWebDriver driver = null!;
+        private WebDriverWait wait = null!;
+        private string baseUrl = "https://localhost:7265"; // Ajusta tu puerto
         private string testEmpleadoEmail = $"testempleado_{Guid.NewGuid()}@mail.com";
 
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver();
+            var options = new EdgeOptions();
+            driver = new EdgeDriver(options);
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            driver.Manage().Window.Maximize();  
         }
 
         [TearDown]
